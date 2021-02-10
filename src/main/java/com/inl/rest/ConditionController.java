@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.stream.Collectors; 
 import java.util.stream.Stream;
 import java.util.Comparator;
+import java.util.Random;
 
 import com.inl.rest.domain.*;
 
@@ -37,6 +38,14 @@ public class ConditionController {
         List<Condition> conds = conditionRepository.findByStudy(study);
         Comparator<Condition> comp = Comparator.comparing(Condition::getWeightedness);
         return conds.stream().max(comp).get();
+    }
+    
+    @GetMapping("/getSampledConditionByStudy")
+    public Condition getSampledConditionByStudy(@RequestHeader("study") String study)
+    {
+        List<Condition> conds = conditionRepository.findByStudy(study);
+        Random rand = new Random();
+        return conds.get(rand.nextInt(conds.size()));
     }
     
     @GetMapping("/getAllCbalStudies")
