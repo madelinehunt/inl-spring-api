@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestHeader;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.data.jpa.repository.Query;
 
@@ -27,13 +28,13 @@ public class ConditionController {
     ConditionRepository conditionRepository;
 
     @GetMapping("/getConditionsByStudy")
-    public List<Condition> getConditionsByStudy(@RequestHeader("study") String study)
+    public List<Condition> getConditionsByStudy(@RequestParam String study)
     {
         return conditionRepository.findByStudy(study);
     }
     
     @GetMapping("/getWeightedConditionByStudy")
-    public Condition getWeightedConditionByStudy(@RequestHeader("study") String study)
+    public Condition getWeightedConditionByStudy(@RequestParam String study)
     {
         List<Condition> conds = conditionRepository.findByStudy(study);
         Comparator<Condition> comp = Comparator.comparing(Condition::getWeightedness);
@@ -41,7 +42,7 @@ public class ConditionController {
     }
     
     @GetMapping("/getSampledConditionByStudy")
-    public Condition getSampledConditionByStudy(@RequestHeader("study") String study)
+    public Condition getSampledConditionByStudy(@RequestParam String study)
     {
         List<Condition> conds = conditionRepository.findByStudy(study);
         Random rand = new Random();

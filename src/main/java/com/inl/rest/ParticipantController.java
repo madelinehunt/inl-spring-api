@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors; 
 import java.util.stream.Stream; 
+import java.util.Date;
 
 import com.inl.rest.domain.*;
 
@@ -15,8 +16,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestHeader;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.data.jpa.repository.Query;
+
+import javax.servlet.http.HttpServletRequest;
 
 @RestController
 public class ParticipantController {
@@ -45,12 +49,15 @@ public class ParticipantController {
     @GetMapping("/getAllStudies")
     public List<String> getDistinctStudy()
     {
-        // List<Participant> studies = participantRepository.findDistinctStudy();
-        // return studies
-        //     .stream()
-        //     .map(Participant::getStudy)
-        //     .collect(Collectors.toList());
         return participantRepository.findDistinctStudy();
+    }
+    
+    @PostMapping("/recordParticipant")
+    public Participant recordParticipant(Participant participant)
+    {
+        Date date = new Date(System.currentTimeMillis());
+        participant.setDateTime(date);
+        return participantRepository.save(participant);
     }
     
     

@@ -7,11 +7,13 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import java.util.Date;
 
+import static javax.persistence.GenerationType.IDENTITY;
 
 @Entity
 @Table(name="participant_counts")
 public class Participant {
     @Id
+    @GeneratedValue(strategy = IDENTITY)
     @Column(name = "ID")
     private Long id;
     
@@ -52,19 +54,19 @@ public class Participant {
         this.id = id;
     }
 
-    public String getPlatformId() {
+    public String getPlatformID() {
         return platformID;
     }
 
-    public void setPlatformId(String platformID) {
+    public void setPlatformID(String platformID) {
         this.platformID = platformID;
     }
 
-    public String getSubjId() {
+    public String getSubjID() {
         return subjID;
     }
 
-    public void setSubjId(String subjID) {
+    public void setSubjID(String subjID) {
         this.subjID = subjID;
     }
 
@@ -92,5 +94,9 @@ public class Participant {
         this.datetime = datetime;
     }
     
+    @Override
+    public String toString(){
+        return "Id - " + id + ", platformID - " + platformID + ", subjID - " + subjID + ", protocol - " + protocol + ", study - " + study + ", datetime - " + datetime;
+    }
 
 }
