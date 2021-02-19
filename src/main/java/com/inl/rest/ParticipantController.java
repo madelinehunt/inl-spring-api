@@ -41,7 +41,7 @@ public class ParticipantController {
     }
     
     @GetMapping("/getParticipantsByStudy")
-    public List<Participant> getParticipantsByStudy(@RequestHeader("study") String study)
+    public List<Participant> getParticipantsByStudy(@RequestParam String study)
     {
         return participantRepository.findByStudy(study);
     }
