@@ -20,7 +20,7 @@ public class NewExpt{
     private String platform;
     private String protocol;
     
-    private static String sourceRepo = "/ops_home/mcikara/lab_software/repos/cl_platform_seed_w_placeholders.git";
+    private static String sourceRepo = "/home/mcikara/lab_software/repos/cl_platform_seed_w_placeholders.git";
     private static String[] placeholders = {
         "•platform•",
         "•protocol•",
@@ -33,7 +33,7 @@ public class NewExpt{
     private Path destRepoDir;
     private Path destLiveDir;
     
-    private static String sedDelegateLocation = "/ops_home/mcikara/lab_software/.helpers/sed_delegate.py";
+    private static String sedDelegateLocation = "/home/mcikara/lab_software/.helpers/sed_delegate.py";
     
     public NewExpt(String exptNameArg, String exptFilepathArg, String platformArg, String protocolArg){
         this.exptName = exptNameArg;
@@ -41,8 +41,8 @@ public class NewExpt{
         this.platform = platformArg;
         this.protocol = protocolArg;
         // these are constants and should never change
-        this.repoPathRoot = Paths.get("/ops_home/mcikara/apps/expts/repos/");
-        this.livePathRoot = Paths.get("/ops_home/mcikara/apps/expts/live/");
+        this.repoPathRoot = Paths.get("/home/mcikara/apps/expts/repos/");
+        this.livePathRoot = Paths.get("/home/mcikara/apps/expts/live/");
         
         this.replacements.put(this.placeholders[0], platformArg);
         this.replacements.put(this.placeholders[1], protocolArg);

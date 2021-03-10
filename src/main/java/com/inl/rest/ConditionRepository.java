@@ -11,5 +11,8 @@ public interface ConditionRepository extends JpaRepository<Condition, Long>{
     
     @Query("SELECT DISTINCT study from Condition")
     List<String> findDistinctStudy();
+    
+    @Query("SELECT DISTINCT study from Condition where id > 5055 order by study ASC")
+    List<String> findRecentStudynames();
 
 }

@@ -6,10 +6,13 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import static javax.persistence.GenerationType.IDENTITY;
+
 @Entity
 @Table(name="counterbalancing")
 public class Condition {
     @Id
+    @GeneratedValue(strategy = IDENTITY)
     @Column(name = "ID")
     private Long id;
     
