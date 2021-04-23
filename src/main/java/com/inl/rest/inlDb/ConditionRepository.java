@@ -1,6 +1,6 @@
-package com.inl.rest;
+package com.inl.rest.inlDB;
 
-import com.inl.rest.domain.*;
+import com.inl.rest.inlDB.domain.*;
 import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;

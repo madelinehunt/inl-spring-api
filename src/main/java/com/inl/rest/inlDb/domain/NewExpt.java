@@ -1,4 +1,4 @@
-package com.inl.rest.domain;
+package com.inl.rest.inlDB.domain;
 
 import java.util.HashMap;
 import java.util.List;

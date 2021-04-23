@@ -1,4 +1,4 @@
-package com.inl.rest;
+package com.inl.rest.inlDB;
 
 import java.util.List;
 import java.util.Optional;
@@ -9,7 +9,7 @@ import java.util.Comparator;
 import java.util.Random;
 import java.util.stream.Collectors;
 
-import com.inl.rest.domain.*;
+import com.inl.rest.inlDB.domain.*;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;

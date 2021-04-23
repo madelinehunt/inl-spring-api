@@ -1,4 +1,4 @@
-package com.inl.rest.domain;
+package com.inl.rest.inlDB.domain;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -97,6 +97,34 @@ public class Participant {
     @Override
     public String toString(){
         return "Id - " + id + ", platformID - " + platformID + ", subjID - " + subjID + ", protocol - " + protocol + ", study - " + study + ", datetime - " + datetime;
+    }
+    
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj){
+            return true;
+        }
+        
+        if (obj == null){
+            return false;
+        }
+        
+        if (this.getClass() != obj.getClass()){
+            return false;
+        }
+            
+        Participant other = (Participant) obj;
+        if (platformID == null) {
+            if (other.platformID != null) {
+                return false;
+            } else {
+                return true;
+            }
+        } else if (!platformID.equals(other.platformID)) {
+            return false;
+        }
+        
+        return true;
     }
 
 }

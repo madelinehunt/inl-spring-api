@@ -1,4 +1,4 @@
-package com.inl.rest.domain;
+package com.inl.rest.inlDB.domain;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

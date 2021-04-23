@@ -1,6 +1,6 @@
-package com.inl.rest;
+package com.inl.inlDB.rest;
 
-import com.inl.rest.domain.NewExpt;
+import com.inl.rest.inlDB.domain.NewExpt;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
