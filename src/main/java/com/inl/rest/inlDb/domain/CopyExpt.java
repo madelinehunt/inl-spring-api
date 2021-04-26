@@ -8,23 +8,26 @@ import java.util.Arrays;
 import java.util.stream.Collectors;
 import java.nio.file.Paths;
 
-public class NewExpt extends ExptSpawner {
-    private final String sourceRepo = "/home/mcikara/lab_software/repos/cl_platform_seed_w_placeholders.git";
+public class CopyExpt extends ExptSpawner {
     private final String[] placeholders = {
-        "•platform•",
-        "•protocol•",
-        "•studyname•"
+        "expt\\.platform.*;",
+        "expt\\.protocol.*;",
+        "expt\\.studyName.*;"
     };    
     private static String sedDelegateLocation = "/home/mcikara/lab_software/.helpers/sed_delegate.py";
     
-    public NewExpt(String exptNameArg, String exptFilepathArg, String platformArg, String protocolArg){
+    public CopyExpt(String sourceRepo, String exptNameArg, String exptFilepathArg, String platformArg, String protocolArg){
         this.exptName = exptNameArg;
         this.exptFilepath = exptFilepathArg;
         this.platform = platformArg;
         this.protocol = protocolArg;
-
+        
+        this.sourceRepo = sourceRepo;
+        
         this.repoPathRoot = Paths.get(this.repoPathRootString);
         this.livePathRoot = Paths.get(this.livePathRootString);
+        
+        // build strings for args
         
         this.replacements.put(this.placeholders[0], platformArg);
         this.replacements.put(this.placeholders[1], protocolArg);
