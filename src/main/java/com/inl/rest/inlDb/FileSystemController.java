@@ -1,4 +1,4 @@
-package com.inl.inlDB.rest;
+package com.inl.rest.inlDB;
 
 import com.inl.rest.inlDB.domain.NewExpt;
 import com.inl.rest.inlDB.domain.CopyExpt;
@@ -10,6 +10,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Arrays;
+import java.util.Collections;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -47,4 +48,33 @@ public class FileSystemController {
         File f = new File(fullTarget);
         return Arrays.asList(f.list());
     }
+    
+    @GetMapping("/getResponses")
+    public List<String> getResponses(@RequestParam String target) {
+        List<String> results;
+        String rootOfPath = "/home/mcikara/apps/expts/responses/";
+        String fullTarget = (new StringBuilder())
+            .append(rootOfPath)
+            .append(target)
+            .toString();
+        File f = new File(fullTarget);
+        if(f.exists()) {
+            results = Arrays.asList(f.list());
+        } else {
+            results = Collections.<String> emptyList();;
+        }
+        return results;
+    }
+    
+    // @GetMapping("/checkTarget")
+    // public String checkTarget(String target) {
+    //     String rootOfPath = "/home/mcikara/apps/expts/repos/";
+    //     String fullTarget = (new StringBuilder()).append(rootOfPath).append(target).toString();
+    //     return fullTarget;
+    // }
+    // 
+    // @GetMapping("/echo")
+    // public String echo() {
+    //     return "echo!";
+    // }
 }

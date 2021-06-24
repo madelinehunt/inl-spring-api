@@ -21,6 +21,9 @@ public interface ParticipantRepository extends JpaRepository<Participant, Long>{
     @Query("SELECT MIN(datetime) from Participant")
     List<String> findMinDate();
     
+    @Query("SELECT distinct platformID from Participant where study=:study")
+    List<String> findUniqueParticipantsByStudy(String study);
+    
     // @Query("SELECT COUNT(DISTINCT platformID) AS Count, protocol AS Protocol FROM Participant WHERE (datetime BETWEEN :beginDate and :endDate) GROUP BY protocol")
     // @Query(value="SELECT * FROM participant_counts WHERE (datetime BETWEEN :beginDate and :endDate) AND platformID NOT LIKE '%test%' ", nativeQuery=true)
     // @Query(value="SELECT COUNT(DISTINCT platformID) AS Count, protocol AS Protocol FROM participant_counts WHERE (datetime BETWEEN :beginDate and :endDate) AND platformID NOT LIKE '%test%' GROUP BY platformID, protocol", nativeQuery=true)

@@ -56,6 +56,12 @@ public class ParticipantController {
         return participantRepository.findByStudy(study);
     }
     
+    @GetMapping("/getUniqueParticipantsByStudy")
+    public List<String> getUniqueParticipantsByStudy(@RequestParam String study)
+    {
+        return participantRepository.findUniqueParticipantsByStudy(study);
+    }
+    
     @GetMapping("/getAllStudies")
     public List<String> getDistinctStudy()
     {
